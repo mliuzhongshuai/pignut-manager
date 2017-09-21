@@ -1,9 +1,8 @@
 package org.free.pignut.user.service;
 
-import org.bouncycastle.jcajce.provider.symmetric.AES;
 import org.free.pignut.common.exception.KeyNullException;
 import org.free.pignut.common.util.AESUtil;
-import org.free.pignut.common.util.UserBusEnum;
+import org.free.pignut.common.enums.UserBusEnum;
 import org.free.pignut.common.vo.BusResult;
 import org.free.pignut.common.vo.user.UserVo;
 import org.free.pignut.user.dao.UserDao;

@@ -1,4 +1,4 @@
-package org.free.pignut.common.util;
+package org.free.pignut.common.enums;
 
 /**
  * Created by liuzhongshuai on 2017/9/14.
@@ -30,7 +30,7 @@ public enum UserBusEnum {
                 return status;
             }
         }
-        throw new IllegalArgumentException("未知的库存操作类型:code = " + code);
+        throw new IllegalArgumentException("未知的操作类型:code = " + code);
     }
 
 

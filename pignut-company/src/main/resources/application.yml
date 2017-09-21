@@ -17,11 +17,6 @@ feign:
   hystrix:
     enabled: false
 
-hystrix:
-  threadpool:
-    pignut-product-server:
-        coreSize: 30
-
 eureka:
   instance:
     hostname: localhost
