@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: pignut-zuul
+
+server:
+  port: 55555
+
+zuul:
+  routes:
+    pignut-user:
+      path: /**/user/**
+      serviceId: pignut-user
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka

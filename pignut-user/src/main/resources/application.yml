@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: pignut-user
+  profiles:
+    active: dev
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://192.168.1.101:3306/db_pignut_user?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 8080
+
+pignut:
+    user:
+      register:
+        key: abcd@11234jhjhkkkasdfasf
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1111/eureka/

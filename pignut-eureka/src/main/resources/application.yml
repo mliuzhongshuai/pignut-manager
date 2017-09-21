@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: pignut-eureka-server
+  profiles:
+    active: dev
+
+server:
+  port: 1111
+
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

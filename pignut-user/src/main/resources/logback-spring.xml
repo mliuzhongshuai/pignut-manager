@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <property name="LOG_PATH" value="~/pignut-logs" />
+    <property name="LOG_FILE_NAME" value="pignut" />
+
+    <springProfile name="dev">
+        <appender name="LOGFILE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg%n</pattern>
+            </encoder>
+        </appender>
+        <logger name="org.free.pignut" level="TRACE" >
+            <appender-ref ref="LOGFILE"/>
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="LOGFILE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <appender name="LOGFILE-INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${LOG_PATH}/${LOG_FILE_NAME}-info.log</File>
+            <rollingPolicy
+                    class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}_%d{yyyy-MM-dd}.log.%d{yyyy-MM-dd}</FileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %p %C %t, - %msg%n</pattern>
+            </layout>
+        </appender>
+
+        <appender name="LOGFILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${LOG_PATH}/${LOG_FILE_NAME}-error.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOG_PATH}/${LOG_FILE_NAME}_%d{yyyy-MM-dd}.%d{yyyy-MM-dd}</FileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %p %C %t, - %msg%n</pattern>
+            </layout>
+        </appender>
+
+        <logger name="org.free.pignut">
+            <level value="error" />
+            <appender-ref ref="LOGFILE-ERROR"/>
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="LOGFILE-INFO"/>
+        </root>
+    </springProfile>
+</configuration>
