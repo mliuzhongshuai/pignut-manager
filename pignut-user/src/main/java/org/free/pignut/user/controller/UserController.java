@@ -32,7 +32,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 用户注册
+     * 用户注册,用户注册
      *
      * @param userVo
      * @return
