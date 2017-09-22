@@ -33,7 +33,7 @@ public class Company {
     private Date modifyTime;
 
     @Column
-    private Integer status;
+    private String status;
 
     public Long getId() {
         return id;
@@ -91,11 +91,11 @@ public class Company {
         this.modifyTime = modifyTime;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

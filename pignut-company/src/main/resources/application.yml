@@ -3,12 +3,12 @@ spring:
     name: pignut-company
   profiles:
     active: dev
-      datasource:
-          type: com.alibaba.druid.pool.DruidDataSource
-          url: jdbc:mysql://172.16.162.135:3306/db_pignut_company?useUnicode=true&characterEncoding=utf-8
-          username: root
-          password: root
-          driver-class-name: com.mysql.jdbc.Driver
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.16.162.135:3306/db_pignut_company?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
 
 server:
   port: 8081

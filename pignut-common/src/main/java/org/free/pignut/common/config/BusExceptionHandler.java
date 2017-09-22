@@ -34,7 +34,7 @@ public class BusExceptionHandler {
             //需要记录日志
             logger.error("非自定义异常:", e);
             baseBody.setReturnCode(5000);//位置异常错误码
-            baseBody.setReturnMsg("系统异常,请联系管理员!");
+            baseBody.setReturnMsg("系统异常:"+e.getMessage());
         }
         return baseBody;
     }

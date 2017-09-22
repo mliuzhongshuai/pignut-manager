@@ -92,7 +92,7 @@ public class UserService {
             return busResult;
         }
         //用户状态已被禁用
-        if (1 == user.getStatus()) {
+        if ("1".equals(user.getStatus())) {
             busResult.setReturnCode(UserBusEnum.VALID_USER_STATUS_DELETED.getCode());
             return busResult;
         }
@@ -152,7 +152,7 @@ public class UserService {
             return busResult;
         }
         //用户已经是 禁用状态
-        if(user.getStatus()==1){
+        if("1".equals(user.getStatus())){
             busResult.setReturnCode(UserBusEnum.VALID_USER_STATUS_DELETED.getCode());
             return busResult;
         }

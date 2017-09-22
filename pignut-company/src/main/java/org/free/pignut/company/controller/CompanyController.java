@@ -1,6 +1,8 @@
 package org.free.pignut.company.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.free.pignut.common.enums.CompanyBusEnum;
 import org.free.pignut.common.enums.UserBusEnum;
 import org.free.pignut.common.vo.BaseBody;
 import org.free.pignut.common.vo.BusResult;
@@ -11,11 +13,13 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLDataException;
 import java.util.List;
 
 /**
  * Created by liuzhongshuai on 2017/9/12.
  */
+@Api("店铺/公司管理")
 @RestController
 @RequestMapping("/company")
 public class CompanyController {
@@ -33,21 +37,21 @@ public class CompanyController {
 
         if (id == null || id == 0) {
             baseBody.setReturnMsg("参数有误");
-            baseBody.setReturnCode(UserBusEnum.PARAM_ERROR.getCode());
+            baseBody.setReturnCode(CompanyBusEnum.PARAM_ERROR.getCode());
             baseBody.setReturnResult("FAILD");
             return baseBody;
         }
         BusResult<CompanyVo> busResult = companyService.getCompany(id);
         //查询失败!
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(CompanyBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
-            baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
+            baseBody.setReturnMsg(CompanyBusEnum.findByCode(busResult.getReturnCode()).getName());
             return baseBody;
         }
 
         baseBody.setData(busResult.getData());
-        baseBody.setReturnCode(UserBusEnum.SUCCESS.getCode());
+        baseBody.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         baseBody.setReturnMsg("查询公司信息成功!");
         return baseBody;
     }
@@ -61,21 +65,21 @@ public class CompanyController {
 
         if (ownerId == 0) {
             baseBody.setReturnMsg("参数有误");
-            baseBody.setReturnCode(UserBusEnum.PARAM_ERROR.getCode());
+            baseBody.setReturnCode(CompanyBusEnum.PARAM_ERROR.getCode());
             baseBody.setReturnResult("FAILD");
             return baseBody;
         }
         BusResult<List<CompanyVo>> busResult = companyService.findCompany(ownerId);
         //查询失败!
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(CompanyBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
-            baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
+            baseBody.setReturnMsg(CompanyBusEnum.findByCode(busResult.getReturnCode()).getName());
             return baseBody;
         }
 
         baseBody.setData(busResult.getData());
-        baseBody.setReturnCode(UserBusEnum.SUCCESS.getCode());
+        baseBody.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         baseBody.setReturnMsg("查询公司信息成功!");
         return baseBody;
 
@@ -83,8 +87,11 @@ public class CompanyController {
 
     @ApiOperation("修改/新增公司信息")
     @PostMapping("/modifyOrSaveCompany")
-    public BaseBody<CompanyVo> modifyCompany(@RequestBody @Valid CompanyVo companyVo) {
+    public BaseBody<CompanyVo> modifyCompany(@RequestBody @Valid CompanyVo companyVo) throws SQLDataException {
         BaseBody<CompanyVo> baseBody = new BaseBody<CompanyVo>();
+        if(true){
+            throw new SQLDataException("asdf");
+        }
 
         BusResult<CompanyVo> busResult = null;
         //新增
@@ -93,15 +100,15 @@ public class CompanyController {
         } else {//修改
             busResult = companyService.modifyCompany(companyVo);
         }
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(CompanyBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
-            baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
+            baseBody.setReturnMsg(CompanyBusEnum.findByCode(busResult.getReturnCode()).getName());
             return baseBody;
         }
 
         baseBody.setData(busResult.getData());
-        baseBody.setReturnCode(UserBusEnum.SUCCESS.getCode());
+        baseBody.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         baseBody.setReturnMsg("操作成功!");
         return baseBody;
     }
@@ -112,20 +119,20 @@ public class CompanyController {
         BaseBody<CompanyVo> baseBody = new BaseBody<CompanyVo>();
         if (id == 0 || ownerId == 0) {
             baseBody.setReturnMsg("参数有误");
-            baseBody.setReturnCode(UserBusEnum.PARAM_ERROR.getCode());
+            baseBody.setReturnCode(CompanyBusEnum.PARAM_ERROR.getCode());
             baseBody.setReturnResult("FAILD");
             return baseBody;
         }
 
         BusResult<CompanyVo> busResult = companyService.delCompany(id, ownerId);
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(CompanyBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
-            baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
+            baseBody.setReturnMsg(CompanyBusEnum.findByCode(busResult.getReturnCode()).getName());
             return baseBody;
         }
         baseBody.setData(busResult.getData());
-        baseBody.setReturnCode(UserBusEnum.SUCCESS.getCode());
+        baseBody.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         baseBody.setReturnMsg("删除成功!");
         return baseBody;
     }

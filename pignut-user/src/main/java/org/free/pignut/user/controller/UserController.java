@@ -59,7 +59,7 @@ public class UserController {
             return baseBody;
         }
 
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(UserBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
             baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
@@ -101,7 +101,7 @@ public class UserController {
             return baseBody;
         }
         //登录失败
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(UserBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
             baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
@@ -134,7 +134,7 @@ public class UserController {
         }
         BusResult<UserVo> busResult = userService.getUser(id);
         //查询失败!
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(UserBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
             baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());
@@ -160,7 +160,7 @@ public class UserController {
         }
         BusResult<UserVo> busResult = userService.delUser(id);
 
-        if (busResult.getReturnCode() != UserBusEnum.SUCCESS.getCode()) {
+        if (!busResult.getReturnCode().equals(UserBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(busResult.getReturnCode());
             baseBody.setReturnMsg(UserBusEnum.findByCode(busResult.getReturnCode()).getName());

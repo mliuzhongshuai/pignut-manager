@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringCloudApplication
 @EnableHystrixDashboard
 @EnableFeignClients(basePackages = {"org.free.pignut.common.client"})
-@ComponentScan(basePackages = {"springfox","org.free.pignut.company"})
+@ComponentScan(basePackages = {"springfox","org.free.pignut"})
 @EnableTransactionManagement
 public class CompanyServerStarter {
 

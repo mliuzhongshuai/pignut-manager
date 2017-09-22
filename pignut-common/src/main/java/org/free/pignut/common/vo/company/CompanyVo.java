@@ -1,8 +1,10 @@
 package org.free.pignut.common.vo.company;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -12,18 +14,18 @@ public class CompanyVo {
 
     private Long id;
 
-    @NotEmpty(message = "公司名不能为空!")
+    @NotBlank(message = "公司名不能为空!")
     @Length(max = 30, message = "用户名长度在30个字符以内!")
     private String companyName;
 
-    @NotEmpty(message ="公司所属人id必填")
+    @NotNull(message = "公司所属人id必填")
     private Long ownerId;
 
-    @NotEmpty(message = "手机号码不能为空!")
+    @NotBlank(message = "手机号码不能为空!")
     @Length(min = 11, max = 11, message = "请输入11位手机号码!")
     private String linkPhone;
 
-    @NotEmpty(message = "公司地址必填!")
+    @NotBlank(message = "公司地址必填!")
     @Length(max = 50, message = "公司地址在50个字符以内!")
     private String companyAddress;
 
@@ -31,7 +33,7 @@ public class CompanyVo {
 
     private Date modifyTime;
 
-    private Integer status;
+    private String status;
 
     public Long getId() {
         return id;
@@ -89,11 +91,11 @@ public class CompanyVo {
         this.modifyTime = modifyTime;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

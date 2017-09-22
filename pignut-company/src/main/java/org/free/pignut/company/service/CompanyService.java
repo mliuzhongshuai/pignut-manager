@@ -117,7 +117,7 @@ public class CompanyService {
         company.setModifyTime(new Date());
         company.setCreateTime(new Date());
 
-        companyDao.save(company);
+        company=companyDao.save(company);
 
         BeanUtils.copyProperties(company, companyVo);
 
@@ -144,15 +144,12 @@ public class CompanyService {
             busResult.setReturnCode(CompanyBusEnum.SEARCH_COMPANY_ID_NULL.getCode());
             return busResult;
         }
-        company.setStatus(1);
+        company.setStatus("1");
         company.setModifyTime(new Date());
         companyDao.save(company);
 
         busResult.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         return busResult;
-
-
     }
-
 
 }
