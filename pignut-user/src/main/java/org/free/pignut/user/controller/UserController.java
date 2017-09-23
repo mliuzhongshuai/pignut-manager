@@ -80,7 +80,7 @@ public class UserController {
      */
     @ApiOperation("用户登录")
     @PostMapping("/login")
-    public BaseBody<UserVo> userLogin(@RequestBody UserVo userVo) {
+    public BaseBody<UserVo> userLogin(@RequestBody UserVo userVo) throws UnsupportedEncodingException {
 
         BaseBody<UserVo> baseBody = new BaseBody<UserVo>();
         String userName = userVo.getUserName();
@@ -90,16 +90,7 @@ public class UserController {
             baseBody.setReturnMsg("用户名或密码为空!");
             return baseBody;
         }
-        BusResult<UserVo> busResult = null;
-        try {
-            busResult = userService.userLogin(userName, password);
-        } catch (UnsupportedEncodingException e) {
-            logger.error("用户登录信息解密异常{}", e.getMessage());
-            baseBody.setReturnResult("FAILD");
-            baseBody.setReturnCode(5000);
-            baseBody.setReturnMsg("程序异常,请联系管理员!");
-            return baseBody;
-        }
+        BusResult<UserVo> busResult = userService.userLogin(userName, password);
         //登录失败
         if (!busResult.getReturnCode().equals(UserBusEnum.SUCCESS.getCode())) {
             baseBody.setReturnResult("FAILD");

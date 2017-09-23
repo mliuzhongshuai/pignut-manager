@@ -10,6 +10,7 @@ import org.free.pignut.common.vo.company.CompanyVo;
 import org.free.pignut.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -82,15 +83,18 @@ public class CompanyController {
         baseBody.setReturnCode(CompanyBusEnum.SUCCESS.getCode());
         baseBody.setReturnMsg("查询公司信息成功!");
         return baseBody;
-
     }
 
     @ApiOperation("修改/新增公司信息")
     @PostMapping("/modifyOrSaveCompany")
-    public BaseBody<CompanyVo> modifyCompany(@RequestBody @Valid CompanyVo companyVo) throws SQLDataException {
+    public BaseBody<CompanyVo> modifyCompany(@RequestBody @Valid CompanyVo companyVo,BindingResult bindingResult) throws SQLDataException {
         BaseBody<CompanyVo> baseBody = new BaseBody<CompanyVo>();
-        if(true){
-            throw new SQLDataException("asdf");
+
+        if (bindingResult.hasErrors()) {
+            baseBody.setReturnResult("FAILD");
+            baseBody.setReturnCode(UserBusEnum.PARAM_ERROR.getCode());
+            baseBody.setReturnMsg(bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return baseBody;
         }
 
         BusResult<CompanyVo> busResult = null;
