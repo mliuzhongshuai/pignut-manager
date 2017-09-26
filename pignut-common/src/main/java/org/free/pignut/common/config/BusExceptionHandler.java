@@ -1,6 +1,7 @@
 package org.free.pignut.common.config;
 
 import org.free.pignut.common.exception.BaseException;
+import org.free.pignut.common.util.BusLogUtil;
 import org.free.pignut.common.vo.BaseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class BusExceptionHandler {
 
-    private final static Logger logger = LoggerFactory.getLogger(BusExceptionHandler.class);
+    private final static BusLogUtil logger = new BusLogUtil(BusExceptionHandler.class);
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
@@ -34,7 +35,7 @@ public class BusExceptionHandler {
             //需要记录日志
             logger.error("非自定义异常:", e);
             baseBody.setReturnCode(5000);//位置异常错误码
-            baseBody.setReturnMsg("系统异常:"+e.getMessage());
+            baseBody.setReturnMsg("系统异常:" + e.getMessage());
         }
         return baseBody;
     }

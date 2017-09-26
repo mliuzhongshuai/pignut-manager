@@ -36,7 +36,7 @@ public class CompanyController {
 
         BaseBody<CompanyVo> baseBody = new BaseBody<CompanyVo>();
 
-        if (id == null || id == 0) {
+        if (id == 0) {
             baseBody.setReturnMsg("参数有误");
             baseBody.setReturnCode(CompanyBusEnum.PARAM_ERROR.getCode());
             baseBody.setReturnResult("FAILD");
@@ -120,6 +120,10 @@ public class CompanyController {
     @ApiOperation("删除公司信息")
     @DeleteMapping("/{id}/{ownerId}")
     public BaseBody<CompanyVo> delCompany(@RequestParam(defaultValue = "0") @PathVariable Long id, @RequestParam(defaultValue = "0") @PathVariable Long ownerId) {
+        if(true){
+            throw  new RuntimeException("asdf");
+        }
+
         BaseBody<CompanyVo> baseBody = new BaseBody<CompanyVo>();
         if (id == 0 || ownerId == 0) {
             baseBody.setReturnMsg("参数有误");
