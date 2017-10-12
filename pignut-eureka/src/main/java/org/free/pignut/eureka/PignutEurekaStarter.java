@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by liuzhongshuai on 2017/8/30.
  */
 @EnableEurekaServer
-@EnableDiscoveryClient
+/*@EnableDiscoveryClient*/
 @SpringBootApplication
 public class PignutEurekaStarter {
 

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: pignut-product
+  profiles:
+    active: dev
+
+
+server:
+  port: 8082
+
+feign:
+  hystrix:
+    enabled: false
+
+eureka:
+  instance:
+    hostname: localhost
+    #ip-address: 192.168.1.104
+    #prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1111/eureka/
+
