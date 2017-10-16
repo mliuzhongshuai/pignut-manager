@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
 @RequestMapping("/user")
 public class UserController {
 
-    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -52,7 +52,7 @@ public class UserController {
         try {
             busResult = userService.userRegister(userVo);
         } catch (UnsupportedEncodingException e) {
-            logger.error("用户注册加密异常:{}", e.getMessage());
+            LOGGER.error("用户注册加密异常:{}", e.getMessage());
             baseBody.setReturnResult("FAILD");
             baseBody.setReturnCode(4444);
             baseBody.setReturnMsg("程序异常,请联系管理员!");
