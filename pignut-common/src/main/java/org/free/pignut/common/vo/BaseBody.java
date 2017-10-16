@@ -3,6 +3,7 @@ package org.free.pignut.common.vo;
 /**
  * 请求返回实体封装
  * Created by liuzhongshuai on 2017/9/14.
+ * @author liuzhongshuai
  */
 public class BaseBody<T> {
 

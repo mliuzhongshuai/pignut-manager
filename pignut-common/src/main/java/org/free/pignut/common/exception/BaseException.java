@@ -3,6 +3,7 @@ package org.free.pignut.common.exception;
 /**
  * Created by liuzhongshuai on 2017/9/18.
  * 所有的自定义异常类 必须继承此异常类
+ * @author liuzhongshuai
  */
 public class BaseException extends RuntimeException {
 

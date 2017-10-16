@@ -16,10 +16,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by liuzhongshuai on 2017/9/21.
+ * @author liuzhongshuai
+ *         Created by liuzhongshuai on 2017/9/21.
  */
 @Service
-@Transactional
 public class CompanyService {
 
     @Autowired
@@ -83,6 +83,7 @@ public class CompanyService {
      * @param companyVo
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public BusResult<CompanyVo> modifyCompany(CompanyVo companyVo) {
 
         BusResult<CompanyVo> busResult = new BusResult<CompanyVo>();
@@ -108,6 +109,7 @@ public class CompanyService {
      * @param companyVo
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public BusResult<CompanyVo> saveCompany(CompanyVo companyVo) {
 
         BusResult<CompanyVo> busResult = new BusResult<CompanyVo>();
@@ -117,7 +119,7 @@ public class CompanyService {
         company.setModifyTime(new Date());
         company.setCreateTime(new Date());
 
-        company=companyDao.save(company);
+        company = companyDao.save(company);
 
         BeanUtils.copyProperties(company, companyVo);
 
@@ -134,6 +136,7 @@ public class CompanyService {
      * @param ownerId ：公司所有者Id
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public BusResult<CompanyVo> delCompany(Long id, Long ownerId) {
 
         BusResult<CompanyVo> busResult = new BusResult<CompanyVo>();

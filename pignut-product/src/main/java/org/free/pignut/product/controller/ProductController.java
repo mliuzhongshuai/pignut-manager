@@ -7,6 +7,7 @@ import org.free.pignut.common.vo.BaseBody;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/29.
  */
 @Api("产品信息")

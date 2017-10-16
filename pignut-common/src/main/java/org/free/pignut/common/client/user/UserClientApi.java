@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/15.
  */
 @RestController
@@ -21,6 +22,7 @@ public interface UserClientApi {
      * 用户注册
      *
      * @param userVo
+     * @param bindingResult
      * @return
      */
     @PostMapping("/register")
@@ -29,7 +31,8 @@ public interface UserClientApi {
 
     /**
      * 用户登录
-     *
+     * @param userVo
+     * @param bindingResult
      * @return
      */
     @PostMapping("/login")

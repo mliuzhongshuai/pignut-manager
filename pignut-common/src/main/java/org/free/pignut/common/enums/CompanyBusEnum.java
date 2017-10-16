@@ -1,6 +1,7 @@
 package org.free.pignut.common.enums;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/21.
  */
 public enum CompanyBusEnum {

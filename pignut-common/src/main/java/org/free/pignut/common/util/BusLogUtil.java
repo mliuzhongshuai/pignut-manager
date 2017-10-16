@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/26.
  * 日志工具类
  */

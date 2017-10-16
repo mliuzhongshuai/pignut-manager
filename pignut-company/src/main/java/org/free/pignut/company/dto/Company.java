@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/21.
  */
 @Entity

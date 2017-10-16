@@ -20,10 +20,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/15.
  */
 @Service
-@Transactional
+
 public class UserService {
 
 
@@ -41,6 +42,7 @@ public class UserService {
      * @return
      * @throws UnsupportedEncodingException
      */
+    @Transactional(rollbackFor = Exception.class)
     public BusResult<UserVo> userRegister(UserVo userVo) throws UnsupportedEncodingException {
         BusResult busResult = new BusResult();
 
@@ -143,6 +145,7 @@ public class UserService {
      * @param id
      * @return
      */
+    @Transactional(rollbackFor = Exception.class)
     public BusResult<UserVo> delUser(Long id){
         BusResult<UserVo> busResult = new BusResult<UserVo>();
 

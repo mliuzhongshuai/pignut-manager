@@ -2,6 +2,7 @@ package org.free.pignut.common.exception;
 
 /**
  * Created by liuzhongshuai on 2017/9/18.
+ * @author liuzhongshuai
  */
 public class BusException extends  BaseException {
 

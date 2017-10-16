@@ -5,6 +5,7 @@ import java.util.Date;
 
 /**
  * Created by liuzhongshuai on 2017/9/15.
+ * @author liuzhongshuai
  */
 @Entity
 @Table(name = "tb_user")

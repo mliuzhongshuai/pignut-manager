@@ -1,6 +1,7 @@
 package org.free.pignut.common.vo;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/15.
  */
 public class BusResult<T> {

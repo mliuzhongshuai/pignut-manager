@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/21.
  */
 public class CompanyVo {

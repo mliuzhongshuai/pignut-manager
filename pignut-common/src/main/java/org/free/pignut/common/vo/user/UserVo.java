@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.Date;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/14.
  */
 public class UserVo {

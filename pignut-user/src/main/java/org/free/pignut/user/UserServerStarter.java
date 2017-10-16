@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/8/30.
  */
 @SpringBootApplication

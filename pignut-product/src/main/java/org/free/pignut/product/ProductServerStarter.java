@@ -7,6 +7,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.context.annotation.ComponentScan;
 
 /**
+ * @author liuzhongshuai
  * Created by liuzhongshuai on 2017/9/29.
  */
 @SpringCloudApplication
